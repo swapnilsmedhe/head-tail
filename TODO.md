@@ -2,11 +2,11 @@
 
 - [ ] Make `head` work for single file without any options
 - [ ] Imlement `head` with bytes option
-- [ ] Consider a richer structure for option as an argument to head
 - [ ] Implement `headMain`
 
 **DONE**
 
+- [x] Consider a richer structure for option as an argument to head
 - [x] Implement `head` with custom count option
 - [x] Move `splitLines`, `joinLines` and `NEWLINE` to string `utils.js`
 - [x] Extract a function which will give required number of lines

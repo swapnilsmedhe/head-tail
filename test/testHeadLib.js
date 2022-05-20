@@ -3,18 +3,28 @@ const { head, firstNLines } = require('../src/headLib.js');
 
 describe('head', () => {
   it('should give all lines if count is greater than number of lines', () => {
-    assert.strictEqual(head('hello', 3), 'hello');
-    assert.strictEqual(head('hello\nhi', 5), 'hello\nhi');
-    assert.strictEqual(head('hello\nhi\nbye', 9), 'hello\nhi\nbye');
+    let option = { name: 'lines', value: 3 };
+    assert.strictEqual(head('hello', option), 'hello');
+
+    option = { name: 'lines', value: 5 };
+    assert.strictEqual(head('hello\nhi', option), 'hello\nhi');
+
+    option = { name: 'lines', value: 9 };
+    assert.strictEqual(head('hello\nhi\nbye', option), 'hello\nhi\nbye');
   });
 
   it('should only give first n lines', () => {
-    assert.strictEqual(head('hi\nhello\nbye', 1), 'hi');
-    assert.strictEqual(head('sea\nriver\nlake\npond\nwell', 2), 'sea\nriver');
+    let option = { name: 'lines', value: 1 };
+    assert.strictEqual(head('hi\nhello\nbye', option), 'hi');
+
+    option = { name: 'lines', value: 2 };
+    assert.strictEqual(head('sea\nriver\nlake\npond\nwell', option),
+      'sea\nriver');
   });
 
   it('should not give any lines if count is 0', () => {
-    return assert.strictEqual(head('hi\nhello', 0), '');
+    const option = { name: 'lines', value: 0 };
+    assert.strictEqual(head('hi\nhello', option), '');
   });
 });
 
