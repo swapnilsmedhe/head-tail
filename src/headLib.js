@@ -1,9 +1,11 @@
 const { splitLines, joinLines } = require('./stringUtils.js');
 
+const firstNLines = (lines, count) => lines.slice(0, count);
+
 const head = (content) => {
   const lines = splitLines(content);
-  const firstTenLines = lines.slice(0, 10);
-  return joinLines(firstTenLines);
+  return joinLines(firstNLines(lines, 10));
 };
 
 exports.head = head;
+exports.firstNLines = firstNLines;

@@ -3,11 +3,11 @@
 - [ ] Implement `head` with custom count option
 - [ ] Make `head` work for single file without any options
 - [ ] Make `head` work for single line
-- [ ] Move `splitLines`, `joinLines` and `NEWLINE` to string `utils.js`
-- [ ] Extract a function which will give required number of lines
 
 **DONE**
 
+- [x] Extract a function which will give required number of lines
+- [x] Move `splitLines`, `joinLines` and `NEWLINE` to string `utils.js`
 - [x] Extract `\n` to a constant
 - [x] Extract functions to split and join lines
 - [x] Make `src` and `test` directory 
