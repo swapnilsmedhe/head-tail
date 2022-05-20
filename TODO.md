@@ -1,11 +1,13 @@
 **TODO**
 
-- [ ] Make `head` work for single file without any options
 - [ ] Implement `headMain`
-- [ ] Make `testHeadMain.js`
+- [ ] Implement `headMain` for custom count option with file single file
+- [ ] Implement `parseArgs`
 
 **DONE**
 
+- [x] Make `head` work for single file without any options
+- [x] Make `testHeadMain.js`
 - [x] Test `stringUtils.js`
 - [x] Imlement `head` with bytes option
 - [x] Consider a richer structure for option as an argument to head

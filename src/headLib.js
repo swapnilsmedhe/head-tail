@@ -8,5 +8,11 @@ const head = (content, { name: option, value }) => {
   return join(firstNElements(splitContent, value), delimeter);
 };
 
+const headMain = (readFile, fileName) => {
+  const content = readFile(fileName, 'utf8');
+  return head(content, { name: 'lines', value: 10 });
+};
+
+exports.headMain = headMain;
 exports.head = head;
 exports.firstNElements = firstNElements;
