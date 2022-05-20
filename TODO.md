@@ -1,6 +1,7 @@
 **TODO**
 
-- [ ] Make `head` work with file contents instead of file without any options
+- [ ] Extract functions to split and join lines
+- [ ] Implement `head` with custom count option
 - [ ] Make `head` work for single file without any options
 - [ ] Make `head` work for single line
 
