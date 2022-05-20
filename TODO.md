@@ -2,10 +2,11 @@
 
 - [ ] Make `head` work for single file without any options
 - [ ] Implement `headMain`
-- [ ] Test `stringUtils.js`
+- [ ] Make `testHeadMain.js`
 
 **DONE**
 
+- [x] Test `stringUtils.js`
 - [x] Imlement `head` with bytes option
 - [x] Consider a richer structure for option as an argument to head
 - [x] Implement `head` with custom count option
