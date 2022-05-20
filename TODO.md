@@ -1,11 +1,12 @@
 **TODO**
 
 - [ ] Make `head` work for single file without any options
-- [ ] Imlement `head` with bytes option
 - [ ] Implement `headMain`
+- [ ] Test `stringUtils.js`
 
 **DONE**
 
+- [x] Imlement `head` with bytes option
 - [x] Consider a richer structure for option as an argument to head
 - [x] Implement `head` with custom count option
 - [x] Move `splitLines`, `joinLines` and `NEWLINE` to string `utils.js`
