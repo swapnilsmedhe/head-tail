@@ -4,6 +4,7 @@
 - [ ] Make `head` work for single file without any options
 - [ ] Make `head` work for single line
 - [ ] Move `splitLines`, `joinLines` and `NEWLINE` to string `utils.js`
+- [ ] Extract a function which will give required number of lines
 
 **DONE**
 
