@@ -1,7 +1,9 @@
 **TODO**
 
 - [ ] Make `head` work for single file without any options
-- [ ] Make `head` work for single line
+- [ ] Imlement `head` with bytes option
+- [ ] Consider a richer structure for option as an argument to head
+- [ ] Implement `headMain`
 
 **DONE**
 
