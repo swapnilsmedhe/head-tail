@@ -1,7 +1,4 @@
-const NEWLINE = '\n';
-
-const splitLines = (content) => content.split(NEWLINE);
-const joinLines = (lines) => lines.join(NEWLINE);
+const { splitLines, joinLines } = require('./stringUtils.js');
 
 const head = (content) => {
   const lines = splitLines(content);
