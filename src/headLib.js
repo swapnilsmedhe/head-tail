@@ -1,11 +1,12 @@
-const { splitLines, joinLines } = require('./stringUtils.js');
+const { split, join } = require('./stringUtils.js');
 
-const firstNLines = (lines, count) => lines.slice(0, count);
+const firstNElements = (elements, count) => elements.slice(0, count);
 
 const head = (content, { name: option, value }) => {
-  const lines = splitLines(content);
-  return joinLines(firstNLines(lines, value));
+  const delimeter = option === 'lines' ? '\n' : '';
+  const splitContent = split(content, delimeter);
+  return join(firstNElements(splitContent, value), delimeter);
 };
 
 exports.head = head;
-exports.firstNLines = firstNLines;
+exports.firstNElements = firstNElements;
