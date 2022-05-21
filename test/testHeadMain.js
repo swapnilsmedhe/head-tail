@@ -10,11 +10,27 @@ const mockReadFile = (mockFile, content) => {
 };
 
 describe('headMain', () => {
-  it('should give all lines if file has less than 11 lines', () => {
+  it('should not give more than 10 lines if options are not specified', () => {
     let mockedReadFile = mockReadFile('a.txt', 'hello');
     assert.strictEqual(headMain(mockedReadFile, 'a.txt'), 'hello');
 
     mockedReadFile = mockReadFile('b.txt', 'sea\nriver');
     assert.strictEqual(headMain(mockedReadFile, 'b.txt'), 'sea\nriver');
+  });
+
+  it('should only give n lines if -n option is specified', () => {
+    let mockedReadFile = mockReadFile('a.txt', 'hi\nbye\nhello');
+    assert.strictEqual(headMain(mockedReadFile, '-n', '2', 'a.txt'), 'hi\nbye');
+
+    mockedReadFile = mockReadFile('b.txt', 'sea\nriver\nlake');
+    assert.strictEqual(headMain(mockedReadFile, '-n', '1', 'b.txt'), 'sea');
+  });
+
+  it('should only give n characters if -c option is specified', () => {
+    let mockedReadFile = mockReadFile('b.txt', 'sea\nlake');
+    assert.strictEqual(headMain(mockedReadFile, '-c', '2', 'b.txt'), 'se');
+
+    mockedReadFile = mockReadFile('c.txt', 'lake\nriver');
+    assert.strictEqual(headMain(mockedReadFile, '-c', '6', 'c.txt'), 'lake\nr');
   });
 });

@@ -1,3 +1,4 @@
+const { parseArgs } = require('./parseArgs.js');
 const { split, join } = require('./stringUtils.js');
 
 const firstNElements = (elements, count) => elements.slice(0, count);
@@ -8,9 +9,10 @@ const head = (content, { name: option, value }) => {
   return join(firstNElements(splitContent, value), delimeter);
 };
 
-const headMain = (readFile, fileName) => {
-  const content = readFile(fileName, 'utf8');
-  return head(content, { name: 'lines', value: 10 });
+const headMain = (readFile, ...args) => {
+  const { files, option } = parseArgs(args);
+  const content = readFile(files[0], 'utf8');
+  return head(content, option);
 };
 
 exports.headMain = headMain;
