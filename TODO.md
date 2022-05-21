@@ -2,10 +2,12 @@
 
 - [ ] Implement `headMain`
 - [ ] Implement `parseArgs`
+- [ ] Make head work for multiple files
   - [x] Make it work for single file
   - [ ] Report errors if provided options are invalid
   - [x] If no options are given provide default option of count lines with defualt of 10
   - [ ] Make it work for multiple files
+  - [ ] Options should be parsed independent of order
 
 **DONE**
 
