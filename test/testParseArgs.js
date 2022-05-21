@@ -25,4 +25,13 @@ describe('parseArgs', () => {
     };
     assert.deepStrictEqual(parseArgs(['-c', '3', 'sea.txt']), expected);
   });
+
+  it('should parse options independent of order', () => {
+    const expected = {
+      option: { name: 'lines', value: 2 },
+      files: ['a.txt']
+    };
+    assert.deepStrictEqual(parseArgs(['-n', '5', '-n', '2', 'a.txt']),
+      expected);
+  });
 });

@@ -1,15 +1,17 @@
-const parseArgs = (args) => {
-  let option = { name: 'lines', value: 10 };
-  let files = [];
-  const switches = { '-n': 'lines', '-c': 'bytes' };
-  const firstArg = args[0];
+const isValidOption = (arg) => arg === '-n' || arg === '-c';
 
-  if (!firstArg.startsWith('-')) {
-    files = args;
-    return { option, files };
+const parseArgs = (args) => {
+  const switches = { '-n': 'lines', '-c': 'bytes' };
+  let option = { name: 'lines', value: 10 };
+  let index = 0;
+  let currentArg = args[index];
+
+  while (isValidOption(currentArg)) {
+    option = { name: switches[currentArg], value: +args[index + 1] };
+    index += 2;
+    currentArg = args[index];
   }
-  option = { name: switches[firstArg], value: +args[1] };
-  files = args.slice(2);
+  const files = args.slice(index);
   return { option, files };
 };
 
