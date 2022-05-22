@@ -16,13 +16,12 @@ const restOfArgs = function () {
 };
 
 const createIterator = (args) => {
-  const argsIterator = {};
-  const properties = { args, index: 0 };
+  const argsIterator = { args, index: 0 };
 
-  argsIterator.nextArg = nextArg.bind(properties);
-  argsIterator.hasMoreArgs = hasMoreArgs.bind(properties);
-  argsIterator.currentArg = currentArg.bind(properties);
-  argsIterator.restOfArgs = restOfArgs.bind(properties);
+  argsIterator.nextArg = nextArg.bind(argsIterator);
+  argsIterator.hasMoreArgs = hasMoreArgs.bind(argsIterator);
+  argsIterator.currentArg = currentArg.bind(argsIterator);
+  argsIterator.restOfArgs = restOfArgs.bind(argsIterator);
   return argsIterator;
 };
 

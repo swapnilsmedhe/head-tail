@@ -10,13 +10,18 @@
   - [x] If no options are given provide default option of count lines with defualt of 10
   - [ ] Make it work for multiple files
   - [x] Options should be parsed independent of order
-- [x] Create `argsIterator.js`
-- [x] Move iterator code to `argsIterator.js`
-- [x] Test `argsIterator`
+  - [ ] Iplement parser for non-spaced options (`-n2`)
 - [ ] Simplify `parseOption`
+- [ ] Extract `parseOptions` function from `parseArgs`
+- [ ] Test `validateOption`
+- [ ] Test `parseOption`
 
 **DONE**
 
+- [x] Refactor `argsIterator` to have a single object
+- [x] Create `argsIterator.js`
+- [x] Move iterator code to `argsIterator.js`
+- [x] Test `argsIterator`
 - [x] Implement `headMain` with command line option for `-c`
 - [x] Implement `headMain` with command line option for `-n`
 - [x] Make `testParseArgs.js`

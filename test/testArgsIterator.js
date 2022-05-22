@@ -5,7 +5,7 @@ describe('iterator', () => {
   it('should give the current argument', () => {
     const argsIterator = createIterator(['hello', 'hi']);
     assert.strictEqual(argsIterator.currentArg(), 'hello');
-    argsIterator.nextArg();
+    argsIterator.index = 1;
     assert.strictEqual(argsIterator.currentArg(), 'hi');
   });
 
@@ -28,7 +28,7 @@ describe('iterator', () => {
   it('should give the rest of arguments', () => {
     const argsIterator = createIterator(['sea', 'river', 'lake']);
     assert.deepStrictEqual(argsIterator.restOfArgs(), ['sea', 'river', 'lake']);
-    argsIterator.nextArg();
+    argsIterator.index = 1;
     assert.deepStrictEqual(argsIterator.restOfArgs(), ['river', 'lake']);
   });
 });
