@@ -34,4 +34,11 @@ describe('parseArgs', () => {
     assert.deepStrictEqual(parseArgs(['-n', '5', '-n', '2', 'a.txt']),
       expected);
   });
+
+  it('should report an error if both -n and -c options are provided', () => {
+    assert.throws(() => parseArgs(['-n', '5', '-c', '3', 'a.txt']), {
+      name: 'illegalOption',
+      message: 'Cannnot combine line and byte counts'
+    });
+  });
 });
