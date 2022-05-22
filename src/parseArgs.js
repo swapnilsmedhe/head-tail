@@ -1,9 +1,13 @@
 const { createIterator } = require('./argsIterator.js');
 
+const optionName = (option) => {
+  const options = { '-n': 'lines', '-c': 'bytes' };
+  return options[option];
+};
+
 const parseOption = (argsIterator) => {
-  const switches = { '-n': 'lines', '-c': 'bytes' };
   return {
-    name: switches[argsIterator.currentArg()],
+    name: optionName(argsIterator.currentArg()),
     value: +argsIterator.nextArg()
   };
 };
@@ -20,22 +24,24 @@ const validateOption = (newOption, oldOption) => {
 
 const isEmpty = (option) => Object.keys(option).length === 0;
 
-const parseArgs = (args) => {
+const parseOptions = (argsIterator) => {
   let option = {};
-  const argsIterator = createIterator(args);
-
   while (argsIterator.currentArg().startsWith('-')) {
     const newOption = parseOption(argsIterator);
     option = validateOption(newOption, option);
     argsIterator.nextArg();
   }
-  if (isEmpty(option)) {
-    option = { name: 'lines', value: 10 };
-  }
+  return isEmpty(option) ? { name: 'lines', value: 10 } : option;
+};
+
+const parseArgs = (args) => {
+  const argsIterator = createIterator(args);
+  const option = parseOptions(argsIterator);
   const files = argsIterator.restOfArgs();
   return { option, files };
 };
 
 exports.parseArgs = parseArgs;
 exports.parseOption = parseOption;
+exports.parseOptions = parseOptions;
 exports.validateOption = validateOption;

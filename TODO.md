@@ -11,11 +11,11 @@
   - [ ] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [ ] Iplement parser for non-spaced options (`-n2`)
-- [ ] Simplify `parseOption`
-- [ ] Extract `parseOptions` function from `parseArgs`
 
 **DONE**
 
+- [x] Extract `parseOptions` function from `parseArgs`
+- [x] Simplify `parseOption`
 - [x] Test `validateOption`
 - [x] Test `parseOption`
 - [x] Refactor `argsIterator` to have a single object

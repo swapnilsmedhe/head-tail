@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { createIterator } = require('../src/argsIterator.js');
 const parseArgsLib = require('../src/parseArgs.js');
-const { parseArgs, parseOption, validateOption } = parseArgsLib;
+const { parseArgs, parseOption, parseOptions, validateOption } = parseArgsLib;
 
 describe('parseArgs', () => {
   it('should just parse the file name', () => {
@@ -78,5 +78,26 @@ describe('validateOption', () => {
   it('should give the new option back if old option is empty', () => {
     const newOption = { name: 'lines', value: 3 };
     assert.deepStrictEqual(validateOption(newOption, {}), newOption);
+  });
+});
+
+describe('parseOptions', () => {
+  it('should parse given valid options', () => {
+    let argsIterator = createIterator(['-n', '5', 'a.txt']);
+    assert.deepStrictEqual(parseOptions(argsIterator), {
+      name: 'lines', value: 5
+    });
+
+    argsIterator = createIterator(['-c', '2', 'b.txt']);
+    assert.deepStrictEqual(parseOptions(argsIterator), {
+      name: 'bytes', value: 2
+    });
+  });
+
+  it('should give -n option with default of 10 if no options provided', () => {
+    const argsIterator = createIterator(['a.txt']);
+    assert.deepStrictEqual(parseOptions(argsIterator), {
+      name: 'lines', value: 10
+    });
   });
 });
