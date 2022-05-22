@@ -10,9 +10,9 @@
   - [x] If no options are given provide default option of count lines with defualt of 10
   - [ ] Make it work for multiple files
   - [x] Options should be parsed independent of order
-- [ ] Create `argsIterator.js`
-- [ ] Move iterator code to `argsIterator.js`
-- [ ] Test `argsIterator`
+- [x] Create `argsIterator.js`
+- [x] Move iterator code to `argsIterator.js`
+- [x] Test `argsIterator`
 - [ ] Simplify `parseOption`
 
 **DONE**
