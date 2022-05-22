@@ -13,11 +13,11 @@
   - [ ] Iplement parser for non-spaced options (`-n2`)
 - [ ] Simplify `parseOption`
 - [ ] Extract `parseOptions` function from `parseArgs`
-- [ ] Test `validateOption`
-- [ ] Test `parseOption`
 
 **DONE**
 
+- [x] Test `validateOption`
+- [x] Test `parseOption`
 - [x] Refactor `argsIterator` to have a single object
 - [x] Create `argsIterator.js`
 - [x] Move iterator code to `argsIterator.js`

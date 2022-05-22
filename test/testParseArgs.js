@@ -1,5 +1,7 @@
 const assert = require('assert');
-const { parseArgs } = require('../src/parseArgs.js');
+const { createIterator } = require('../src/argsIterator.js');
+const parseArgsLib = require('../src/parseArgs.js');
+const { parseArgs, parseOption, validateOption } = parseArgsLib;
 
 describe('parseArgs', () => {
   it('should just parse the file name', () => {
@@ -40,5 +42,41 @@ describe('parseArgs', () => {
       name: 'illegalOption',
       message: 'Cannnot combine line and byte counts'
     });
+  });
+});
+
+describe('parseOption', () => {
+  it('should parse -n option', () => {
+    const argsIterator = createIterator(['-n', '5', 'a.txt']);
+    const expected = { name: 'lines', value: 5 };
+    assert.deepStrictEqual(parseOption(argsIterator), expected);
+  });
+
+  it('should parse -c option', () => {
+    const argsIterator = createIterator(['-c', '3', 'a.txt']);
+    const expected = { name: 'bytes', value: 3 };
+    assert.deepStrictEqual(parseOption(argsIterator), expected);
+  });
+});
+
+describe('validateOption', () => {
+  it('should report an error if two different options provided', () => {
+    const newOption = { name: 'lines', value: 3 };
+    const oldOption = { name: 'bytes', value: 5 };
+    assert.throws(() => validateOption(newOption, oldOption), {
+      name: 'illegalOption',
+      message: 'Cannnot combine line and byte counts'
+    });
+  });
+
+  it('should give the new opition back if it is same as the old option', () => {
+    const newOption = { name: 'lines', value: 3 };
+    const oldOption = { name: 'lines', value: 5 };
+    assert.deepStrictEqual(validateOption(newOption, oldOption), newOption);
+  });
+
+  it('should give the new option back if old option is empty', () => {
+    const newOption = { name: 'lines', value: 3 };
+    assert.deepStrictEqual(validateOption(newOption, {}), newOption);
   });
 });

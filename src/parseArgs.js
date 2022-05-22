@@ -37,3 +37,5 @@ const parseArgs = (args) => {
 };
 
 exports.parseArgs = parseArgs;
+exports.parseOption = parseOption;
+exports.validateOption = validateOption;
