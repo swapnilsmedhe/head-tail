@@ -11,10 +11,11 @@
   - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
-  - [ ] Report error when unable to read file
 
 **DONE**
 
+- [x] Remove `hasMoreArgs`
+- [x] Report error when unable to read file
 - [x] Extract `parseOptions` function from `parseArgs`
 - [x] Simplify `parseOption`
 - [x] Test `validateOption`

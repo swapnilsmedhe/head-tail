@@ -33,4 +33,12 @@ describe('headMain', () => {
     mockedReadFile = mockReadFile('c.txt', 'lake\nriver');
     assert.strictEqual(headMain(mockedReadFile, '-c', '6', 'c.txt'), 'lake\nr');
   });
+
+  it('should report an error if unable to read a file', () => {
+    const mockedReadFile = mockReadFile('b.txt', 'hello');
+    assert.throws(() => headMain(mockedReadFile, 'a.txt'), {
+      name: 'fileReadError',
+      message: 'head: a.txt: No such file or directory'
+    });
+  });
 });

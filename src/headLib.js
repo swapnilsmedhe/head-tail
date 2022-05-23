@@ -11,7 +11,15 @@ const head = (content, { name: option, value }) => {
 
 const headMain = (readFile, ...args) => {
   const { files, option } = parseArgs(args);
-  const content = readFile(files[0], 'utf8');
+  let content;
+  try {
+    content = readFile(files[0], 'utf8');
+  } catch (error) {
+    throw {
+      name: 'fileReadError',
+      message: `head: ${files[0]}: No such file or directory`
+    };
+  }
   return head(content, option);
 };
 
