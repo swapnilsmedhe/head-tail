@@ -57,6 +57,12 @@ describe('parseOption', () => {
     const expected = { name: 'bytes', value: 3 };
     assert.deepStrictEqual(parseOption(argsIterator), expected);
   });
+
+  it('should parse non-spaced options', () => {
+    const argsIterator = createIterator(['-n2', 'a.txt']);
+    const expected = { name: 'lines', value: 2 };
+    assert.deepStrictEqual(parseOption(argsIterator), expected);
+  });
 });
 
 describe('validateOption', () => {

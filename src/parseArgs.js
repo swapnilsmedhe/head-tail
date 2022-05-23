@@ -5,11 +5,24 @@ const optionName = (option) => {
   return options[option];
 };
 
+const isOptionIntegrated = (option) => {
+  const endsWithDigit = /\d$/;
+  return endsWithDigit.test(option);
+};
+
+const extractOption = (arg) => arg.substring(0, 2);
+const extractValue = (arg) => arg.substring(2);
+
 const parseOption = (argsIterator) => {
-  return {
-    name: optionName(argsIterator.currentArg()),
-    value: +argsIterator.nextArg()
-  };
+  if (isOptionIntegrated(argsIterator.currentArg())) {
+    const option = extractOption(argsIterator.currentArg());
+    const value = +extractValue(argsIterator.currentArg());
+    const name = optionName(option);
+    return { name, value };
+  }
+  const name = optionName(argsIterator.currentArg());
+  const value = +argsIterator.nextArg();
+  return { name, value };
 };
 
 const validateOption = (newOption, oldOption) => {

@@ -8,9 +8,10 @@
       [x] If both `-n` and `-c` options are provided
       [ ] No value provided with option
   - [x] If no options are given provide default option of count lines with defualt of 10
-  - [ ] Make it work for multiple files
+  - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
-  - [ ] Iplement parser for non-spaced options (`-n2`)
+  - [x] Iplement parser for non-spaced options (`-n2`)
+  - [ ] Report error when unable to read file
 
 **DONE**
 
