@@ -1,7 +1,6 @@
 **TODO**
 
 - [ ] Implement `headMain`
-- [ ] Make head work for multiple files
 - [ ] Implement `parseArgs`
   - [x] Make it work for single file
   - [ ] Report errors if provided options are invalid
@@ -11,11 +10,17 @@
   - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
-- [ ] Consider returning a richer structure from `headMain`
 - [ ] Extract the code of `head.js` into `main`
+- [ ] Simplify `print.js`
+- [ ] Simplify `headMain.js`
+- [ ] Move mockers to `mockers.js`
+- [ ] Rename `print`
 
 **DONE**
 
+- [x] Make head work for multiple files
+- [x] Give the output of head to `print` instead of returning it
+- [x] ~~Consider returning a richer structure from `headMain`~~ `headMain` is not returning anything
 - [x] Make a `print` function which will print the output
 - [x] Remove `hasMoreArgs`
 - [x] Report error when unable to read file

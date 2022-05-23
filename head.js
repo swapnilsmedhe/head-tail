@@ -3,7 +3,7 @@ const { headMain } = require('./src/headLib.js');
 
 const args = process.argv.slice(2);
 try {
-  console.log(headMain(fs.readFileSync, ...args));
+  headMain(fs.readFileSync, console.log, console.error, ...args);
 } catch (error) {
   console.error(error.message);
 }

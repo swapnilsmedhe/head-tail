@@ -1,44 +1,89 @@
 const assert = require('assert');
 const { headMain } = require('../src/headLib.js');
 
-const mockReadFile = (mockFile, content) => {
+const mockReadFile = (mockFiles) => {
   return (fileName, encoding) => {
-    assert.strictEqual(fileName, mockFile);
     assert.strictEqual(encoding, 'utf8');
-    return content;
+    assert.ok(Object.keys(mockFiles).includes(fileName));
+    return mockFiles[fileName];
+  };
+};
+
+const mockConsole = (contents, ...args) => {
+  let index = 0;
+  return (actualText) => {
+    assert.ok(index < args.length);
+    assert.equal(actualText, args[index]);
+    contents.push(actualText);
+    index++;
   };
 };
 
 describe('headMain', () => {
-  it('should not give more than 10 lines if options are not specified', () => {
-    let mockedReadFile = mockReadFile('a.txt', 'hello');
-    assert.strictEqual(headMain(mockedReadFile, 'a.txt'), 'hello');
-
-    mockedReadFile = mockReadFile('b.txt', 'sea\nriver');
-    assert.strictEqual(headMain(mockedReadFile, 'b.txt'), 'sea\nriver');
+  it('should print only 10 lines if file provided without any options', () => {
+    const contents = [];
+    const readFileMock = mockReadFile({ 'a.txt': 'hello' });
+    const mockLog = mockConsole(contents, 'hello');
+    const mockError = mockConsole();
+    headMain(readFileMock, mockLog, mockError, 'a.txt');
+    assert.deepStrictEqual(contents, ['hello']);
   });
 
-  it('should only give n lines if -n option is specified', () => {
-    let mockedReadFile = mockReadFile('a.txt', 'hi\nbye\nhello');
-    assert.strictEqual(headMain(mockedReadFile, '-n', '2', 'a.txt'), 'hi\nbye');
-
-    mockedReadFile = mockReadFile('b.txt', 'sea\nriver\nlake');
-    assert.strictEqual(headMain(mockedReadFile, '-n', '1', 'b.txt'), 'sea');
+  it('should only print n lines if -n option is provided', () => {
+    const contents = [];
+    const readFileMock = mockReadFile({ 'a.txt': 'a\nb\nc\nd\ne\nf' });
+    const mockLog = mockConsole(contents, 'a\nb\nc\nd');
+    const mockError = mockConsole();
+    headMain(readFileMock, mockLog, mockError, '-n', '4', 'a.txt');
+    assert.deepStrictEqual(contents, ['a\nb\nc\nd']);
   });
 
-  it('should only give n characters if -c option is specified', () => {
-    let mockedReadFile = mockReadFile('b.txt', 'sea\nlake');
-    assert.strictEqual(headMain(mockedReadFile, '-c', '2', 'b.txt'), 'se');
-
-    mockedReadFile = mockReadFile('c.txt', 'lake\nriver');
-    assert.strictEqual(headMain(mockedReadFile, '-c', '6', 'c.txt'), 'lake\nr');
+  it('should only print n characters if -c option is provided', () => {
+    const contents = [];
+    const readFileMock = mockReadFile({ 'a.txt': 'hello\nhi' });
+    const mockLog = mockConsole(contents, 'he');
+    const mockError = mockConsole();
+    headMain(readFileMock, mockLog, mockError, '-c', '2', 'a.txt');
+    assert.deepStrictEqual(contents, ['he']);
   });
 
-  it('should report an error if unable to read a file', () => {
-    const mockedReadFile = mockReadFile('b.txt', 'hello');
-    assert.throws(() => headMain(mockedReadFile, 'a.txt'), {
-      name: 'fileReadError',
-      message: 'head: a.txt: No such file or directory'
+  it('should print only 10 lines of each file if multiple files provided without any options', () => {
+    const contents = [];
+    const readFileMock = mockReadFile({
+      'a.txt': 'hello\nhi',
+      'b.txt': 'sea\nlake'
     });
+    const mockLog = mockConsole(contents,
+      '==> a.txt <==\nhello\nhi',
+      '==> b.txt <==\nsea\nlake'
+    );
+    const mockError = mockConsole();
+    headMain(readFileMock, mockLog, mockError, 'a.txt', 'b.txt');
+    assert.deepStrictEqual(contents, [
+      '==> a.txt <==\nhello\nhi',
+      '==> b.txt <==\nsea\nlake'
+    ]);
+  });
+
+  it('should print error if could not read a file', () => {
+    const content = [];
+    const error = 'head: b.txt: No such file or directory';
+    const readFileMock = mockReadFile({ 'a.txt': 'hello' });
+    const mockLog = mockConsole();
+    const mockError = mockConsole(content, error);
+    headMain(readFileMock, mockLog, mockError, 'b.txt');
+    assert.deepStrictEqual(content, [error]);
+  });
+
+  it('should print lines along with error if some files could not read', () => {
+    const logContent = [];
+    const errorContent = [];
+    const error = 'head: c.txt: No such file or directory';
+    const readFileMock = mockReadFile({ 'a.txt': 'sea', 'b.txt': 'lake' });
+    const mockLog = mockConsole(logContent, '==> a.txt <==\nsea');
+    const mockError = mockConsole(errorContent, error);
+    headMain(readFileMock, mockLog, mockError, 'a.txt', 'c.txt');
+    assert.deepStrictEqual(logContent, ['==> a.txt <==\nsea']);
+    assert.deepStrictEqual(errorContent, [error]);
   });
 });
