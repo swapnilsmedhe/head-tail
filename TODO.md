@@ -13,10 +13,10 @@
   - [x] Iplement parser for non-spaced options (`-n2`)
 - [ ] Consider returning a richer structure from `headMain`
 - [ ] Extract the code of `head.js` into `main`
-- [ ] Make a `print` function which will print the output
 
 **DONE**
 
+- [x] Make a `print` function which will print the output
 - [x] Remove `hasMoreArgs`
 - [x] Report error when unable to read file
 - [x] Extract `parseOptions` function from `parseArgs`
