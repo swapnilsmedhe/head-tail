@@ -11,6 +11,9 @@
   - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
+- [ ] Consider returning a richer structure from `headMain`
+- [ ] Extract the code of `head.js` into `main`
+- [ ] Make a `print` function which will print the output
 
 **DONE**
 
