@@ -1,6 +1,6 @@
 const assert = require('assert');
-const { createIterator } = require('../src/argsIterator.js');
-const parseArgsLib = require('../src/parseArgs.js');
+const { createIterator } = require('../../src/head/argsIterator.js');
+const parseArgsLib = require('../../src/head/parseArgs.js');
 const { parseArgs, parseOption, parseOptions, validateOption } = parseArgsLib;
 
 describe('parseArgs', () => {

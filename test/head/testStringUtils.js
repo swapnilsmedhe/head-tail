@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { split, join } = require('../src/stringUtils.js');
+const { split, join } = require('../../src/head/stringUtils.js');
 
 describe('split', () => {
   it('should split given content with delimeter "\\n" ', () => {

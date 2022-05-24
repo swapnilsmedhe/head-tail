@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { printContent } = require('../src/printContent.js');
+const { printContent } = require('../../src/head/printContent.js');
 const { mockConsole } = require('./mockers.js');
 
 describe('print', () => {

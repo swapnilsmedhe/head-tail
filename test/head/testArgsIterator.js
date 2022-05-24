@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { createIterator } = require('../src/argsIterator.js');
+const { createIterator } = require('../../src/head/argsIterator.js');
 
 describe('iterator', () => {
   it('should give the current argument', () => {

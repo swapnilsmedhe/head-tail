@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { head, firstNElements, headFile } = require('../src/headLib.js');
+const { head, firstNElements, headFile } = require('../../src/head/headLib.js');
 const { mockReadFile } = require('./mockers.js');
 
 describe('head', () => {
