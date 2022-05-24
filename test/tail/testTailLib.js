@@ -3,15 +3,23 @@ const { tail, lastNLines } = require('../../src/tail/tailLib');
 
 describe('tail', () => {
   it('should give all lines if count is gretear than number of lines', () => {
-    assert.strictEqual(tail('hello', 3), 'hello');
-    assert.strictEqual(tail('hello\nhi', 10), 'hello\nhi');
+    let option = { name: 'lines', count: 3 };
+    assert.strictEqual(tail('hello', option), 'hello');
+
+    option = { name: 'lines', count: 10 };
+    assert.strictEqual(tail('hello\nhi', option), 'hello\nhi');
   });
 
   it('should give last n lines of given contents', () => {
-    assert.strictEqual(tail('sea\nlake\nriver', 2), 'lake\nriver');
-    assert.strictEqual(tail('sea\nlake\nriver\npond\ngulf', 3),
+    let option = { name: 'lines', count: 2 };
+    assert.strictEqual(tail('sea\nlake\nriver', option), 'lake\nriver');
+
+    option = { name: 'lines', count: 3 };
+    assert.strictEqual(tail('sea\nlake\nriver\npond\ngulf', option),
       'river\npond\ngulf');
-    assert.strictEqual(tail('a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk', 10),
+
+    option = { name: 'lines', count: 10 };
+    assert.strictEqual(tail('a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk', option),
       'b\nc\nd\ne\nf\ng\nh\ni\nj\nk');
   });
 });

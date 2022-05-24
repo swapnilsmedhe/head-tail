@@ -5,10 +5,10 @@
 - [ ] Make `tail` work with file content instead of file
 - [ ] Implement `tail` with lines option with contents of file instead of file
 - [ ] Implement `tail` with bytes option with contents of file instead of file
-- [ ] Consider a richer structure for option as an argument to `tail`
 - [ ] Add `tailMain`
 
 **DONE**
+- [x] Consider a richer structure for option as an argument to `tail`
 - [x] Extract a function which will give last n lines
 - [x] Move `splitLines` and `joinLines` to `stringUtils`
 - [x] Extract `\n` into a variable
