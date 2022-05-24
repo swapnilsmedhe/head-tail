@@ -1,7 +1,10 @@
+const splitLines = (content) => content.split('\n');
+const joinLines = (lines) => lines.join('\n');
+
 const tail = (content, count) => {
-  const lines = content.split('\n');
+  const lines = splitLines(content);
   const tailedLines = lines.slice(-count);
-  return tailedLines.join('\n');
+  return joinLines(tailedLines);
 };
 
 exports.tail = tail;
