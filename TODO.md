@@ -4,7 +4,7 @@
 
 - [ ] Make `tail` work with file content instead of file
 - [ ] Add `tailMain`
-- [ ] Implement `tailMain` with default option of lines
+- [ ] Implement `tailMain` with default option of lines for a single file
 - [ ] Implement `tailMain` with custom count option
 - [ ] Implement `tailMain` with bytes option
 - [ ] Make `tailMain` work for single file 

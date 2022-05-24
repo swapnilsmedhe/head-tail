@@ -15,6 +15,12 @@ const tail = (content, { name: option, count }) => {
   return joinLines(lastNLines(lines, count));
 };
 
+const tailMain = (readFile, fileName) => {
+  const content = readFile(fileName, 'utf8');
+  return tail(content, { name: 'lines', count: 10 });
+};
+
 exports.tail = tail;
+exports.tailMain = tailMain;
 exports.lastNLines = lastNLines;
 exports.lastNCharacters = lastNCharacters;
