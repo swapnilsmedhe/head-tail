@@ -1,15 +1,6 @@
 const assert = require('assert');
 const { print } = require('../src/print.js');
-
-const mockConsole = (contents, ...args) => {
-  let index = 0;
-  return (actualText) => {
-    assert.ok(index < args.length);
-    assert.equal(actualText, args[index]);
-    contents.push(actualText);
-    index++;
-  };
-};
+const { mockConsole } = require('./mockers.js');
 
 describe('print', () => {
   it('should print output of single file if it was read succesfully', () => {

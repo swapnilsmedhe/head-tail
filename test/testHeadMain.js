@@ -1,23 +1,6 @@
 const assert = require('assert');
 const { headMain } = require('../src/headLib.js');
-
-const mockReadFile = (mockFiles) => {
-  return (fileName, encoding) => {
-    assert.strictEqual(encoding, 'utf8');
-    assert.ok(Object.keys(mockFiles).includes(fileName));
-    return mockFiles[fileName];
-  };
-};
-
-const mockConsole = (contents, ...args) => {
-  let index = 0;
-  return (actualText) => {
-    assert.ok(index < args.length);
-    assert.equal(actualText, args[index]);
-    contents.push(actualText);
-    index++;
-  };
-};
+const { mockReadFile, mockConsole } = require('./mockers.js');
 
 describe('headMain', () => {
   it('should print only 10 lines if file provided without any options', () => {
