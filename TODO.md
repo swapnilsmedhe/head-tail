@@ -5,10 +5,10 @@
 - [ ] Make `tail` work with file content instead of file
 - [ ] Implement `tail` with lines option with contents of file instead of file
 - [ ] Extract a function which will give last n lines
-- [ ] Extract `\n` into a variable
-- [ ] Move `splitLines` and `joinLines` to `stringUtils`
 
 **DONE**
+- [x] Move `splitLines` and `joinLines` to `stringUtils`
+- [x] Extract `\n` into a variable
 - [x] Extract `splitLines` and `joinLines` from `tail`
 - [x] Write README for `tail`
 - [x] Make `head` and `tail` directories in `src` and `test`
