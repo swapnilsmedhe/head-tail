@@ -2,14 +2,16 @@
 
 **TODO**
 
-- [ ] Make `head` and `tail` directories in `src` and `test`
-- [ ] Make `testTailLib.js` in `test/tail` directory
-- [ ] Write a test for `testTailLib.js`
-- [ ] Make `tailLib.js` in `src/tail` directory
 - [ ] Make `tail` work with file content instead of file
+- [ ] Implement `tail` with lines option with contents of file instead of file
 
 **DONE**
 - [x] Write README for `tail`
+- [x] Make `head` and `tail` directories in `src` and `test`
+- [x] Make `testTailLib.js` in `test/tail` directory
+- [x] Write a test for `testTailLib.js`
+- [x] Make `tailLib.js` in `src/tail` directory
+- [x] Make `tail` work for default option of lines with count of 10 with file contents
 
 ---
 
