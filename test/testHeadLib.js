@@ -1,5 +1,6 @@
 const assert = require('assert');
-const { head, firstNElements } = require('../src/headLib.js');
+const { head, firstNElements, headFile } = require('../src/headLib.js');
+const { mockReadFile } = require('./mockers.js');
 
 describe('head', () => {
   it('should give all lines if count is greater than number of lines', () => {
@@ -48,5 +49,21 @@ describe('firstNElements', () => {
 
   it('should not give any element if count is 0', () => {
     assert.deepStrictEqual(firstNElements(['sea', 'river'], 0), []);
+  });
+});
+
+describe('headFile', () => {
+  it('should head contents of given file', () => {
+    const readFileMock = mockReadFile({ 'a.txt': 'hello' });
+    const option = { name: 'lines', value: 10 };
+    const expected = { file: 'a.txt', content: 'hello', isFileRead: true };
+    assert.deepStrictEqual(headFile(readFileMock, 'a.txt', option), expected);
+  });
+
+  it('should not head contents of given file if could not read file', () => {
+    const readFileMock = mockReadFile({ 'b.txt': 'sea' });
+    const option = { name: 'lines', value: 10 };
+    const expected = { file: 'a.txt', content: undefined, isFileRead: false };
+    assert.deepStrictEqual(headFile(readFileMock, 'a.txt', option), expected);
   });
 });

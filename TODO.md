@@ -1,6 +1,5 @@
 **TODO**
 
-- [ ] Implement `headMain`
 - [ ] Implement `parseArgs`
   - [x] Make it work for single file
   - [ ] Report errors if provided options are invalid
@@ -10,10 +9,11 @@
   - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
-- [ ] Simplify `headMain.js`
 
 **DONE**
 
+- [x] Simplify `headMain.js`
+- [x] Implement `headMain`
 - [x] Rename `print`
 - [x] Move mockers to `mockers.js`
 - [x] Simplify `print.js`

@@ -10,22 +10,25 @@ const head = (content, { name: option, value }) => {
   return join(firstNElements(splitContent, value), delimeter);
 };
 
+const headFile = (readFile, file, option) => {
+  let content;
+  let isFileRead = true;
+  try {
+    const fileContent = readFile(file, 'utf8');
+    content = head(fileContent, option);
+  } catch (error) {
+    isFileRead = false;
+  }
+  return { file, content, isFileRead };
+};
+
 const headMain = (readFile, consoleLog, consoleError, ...args) => {
   const { files, option } = parseArgs(args);
-  const contents = files.map((file) => {
-    let content;
-    let isFileRead = true;
-    try {
-      const fileContent = readFile(file, 'utf8');
-      content = head(fileContent, option);
-    } catch (error) {
-      isFileRead = false;
-    }
-    return { file, content, isFileRead };
-  });
-  printContent(consoleLog, consoleError, contents);
+  const headContent = files.map((file) => headFile(readFile, file, option));
+  printContent(consoleLog, consoleError, headContent);
 };
 
 exports.headMain = headMain;
 exports.head = head;
 exports.firstNElements = firstNElements;
+exports.headFile = headFile;
