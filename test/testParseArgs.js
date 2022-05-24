@@ -40,7 +40,7 @@ describe('parseArgs', () => {
   it('should report an error if both -n and -c options are provided', () => {
     assert.throws(() => parseArgs(['-n', '5', '-c', '3', 'a.txt']), {
       name: 'illegalOption',
-      message: 'Cannnot combine line and byte counts'
+      message: 'head: can\'t combine line and byte counts'
     });
   });
 });
@@ -71,7 +71,7 @@ describe('validateOption', () => {
     const oldOption = { name: 'bytes', value: 5 };
     assert.throws(() => validateOption(newOption, oldOption), {
       name: 'illegalOption',
-      message: 'Cannnot combine line and byte counts'
+      message: 'head: can\'t combine line and byte counts'
     });
   });
 

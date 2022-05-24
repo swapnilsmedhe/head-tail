@@ -29,7 +29,7 @@ const validateOption = (newOption, oldOption) => {
   if (oldOption.name !== newOption.name && !isEmpty(oldOption)) {
     throw {
       name: 'illegalOption',
-      message: 'Cannnot combine line and byte counts'
+      message: 'head: can\'t combine line and byte counts'
     };
   }
   return newOption;
