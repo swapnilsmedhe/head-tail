@@ -3,11 +3,15 @@
 **TODO**
 
 - [ ] Make `tail` work with file content instead of file
-- [ ] Implement `tail` with lines option with contents of file instead of file
-- [ ] Implement `tail` with bytes option with contents of file instead of file
 - [ ] Add `tailMain`
+- [ ] Implement `tailMain` with default option of lines
+- [ ] Implement `tailMain` with custom count option
+- [ ] Implement `tailMain` with bytes option
+- [ ] Make `tailMain` work for single file 
 
 **DONE**
+- [x] Implement `tail` with bytes option with contents of file instead of file
+- [x] Implement `tail` with lines option with contents of file instead of file
 - [x] Consider a richer structure for option as an argument to `tail`
 - [x] Extract a function which will give last n lines
 - [x] Move `splitLines` and `joinLines` to `stringUtils`

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { tail, lastNLines } = require('../../src/tail/tailLib');
+const { tail, lastNLines, lastNCharacters } = require('../../src/tail/tailLib');
 
 describe('tail', () => {
   it('should give all lines if count is gretear than number of lines', () => {
@@ -22,6 +22,22 @@ describe('tail', () => {
     assert.strictEqual(tail('a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk', option),
       'b\nc\nd\ne\nf\ng\nh\ni\nj\nk');
   });
+
+  it('should give last n characters if bytes option is specified', () => {
+    let option = { name: 'bytes', count: 3 };
+    assert.strictEqual(tail('hello', option), 'llo');
+
+    option = { name: 'bytes', count: 7 };
+    assert.strictEqual(tail('sea\nriver', option), 'a\nriver');
+
+    option = { name: 'bytes', count: 10 };
+    assert.strictEqual(tail('hi\nby\nhello', option), 'i\nby\nhello');
+  });
+
+  it('should not give any characters if count is 0', () => {
+    const option = { name: 'bytes', count: 0 };
+    assert.strictEqual(tail('hello', option), '');
+  });
 });
 
 describe('lastNLines', () => {
@@ -36,5 +52,16 @@ describe('lastNLines', () => {
 
   it('should not give any lines if lines empty', () => {
     assert.deepStrictEqual(lastNLines([], 3), []);
+  });
+});
+
+describe('lastNCharacters', () => {
+  it('should give last n characters', () => {
+    assert.strictEqual(lastNCharacters('hello', 2), 'lo');
+    assert.strictEqual(lastNCharacters('sea\nlake', 7), 'ea\nlake');
+  });
+
+  it('should not give any characters if count is 0', () => {
+    assert.strictEqual(lastNCharacters('sea', 0), '');
   });
 });
