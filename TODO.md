@@ -1,3 +1,5 @@
+# TAIL 
+
 **TODO**
 
 - [ ] Make `head` and `tail` directories in `src` and `test`
@@ -5,6 +7,16 @@
 - [ ] Write a test for `testTailLib.js`
 - [ ] Make `tailLib.js` in `src/tail` directory
 - [ ] Make `tail` work with file content instead of file
+
+**DONE**
+- [x] Write README for `tail`
+
+---
+
+# HEAD
+
+**TODO**
+
 - [ ] Implement `parseArgs`
   - [x] Make it work for single file
   - [ ] Report errors if provided options are invalid
@@ -17,7 +29,6 @@
 
 **DONE**
 
-- [x] Write README for `tail`
 - [x] Change the error message for `can't combine line and byte counts`
 - [x] Simplify `headMain.js`
 - [x] Implement `headMain`
