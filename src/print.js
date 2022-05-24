@@ -11,9 +11,9 @@ const print = (consoleLog, consoleError, fileRecords) => {
   fileRecords.forEach(fileRecord => {
     if (fileRecord.isFileRead) {
       consoleLog(formatter(fileRecord));
-    } else {
-      consoleError(`head: ${fileRecord.file}: No such file or directory`);
+      return;
     }
+    consoleError(`head: ${fileRecord.file}: No such file or directory`);
   });
 };
 
