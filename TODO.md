@@ -4,6 +4,8 @@
 
 - [ ] Make `tail` work with file content instead of file
 - [ ] Implement `tail` with lines option with contents of file instead of file
+- [ ] Extract `splitLines` and `joinLines` from `tail`
+- [ ] Extract a function which will give last n lines
 
 **DONE**
 - [x] Write README for `tail`

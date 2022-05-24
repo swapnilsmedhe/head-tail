@@ -1,6 +1,6 @@
-const tail = (content) => {
+const tail = (content, count) => {
   const lines = content.split('\n');
-  const tailedLines = lines.slice(-10);
+  const tailedLines = lines.slice(-count);
   return tailedLines.join('\n');
 };
 
