@@ -1,18 +1,16 @@
-const appendHeader = ({ content, file }) => {
+const insertHeader = ({ content, file }) => {
   const header = `==> ${file} <==\n`;
   return header + content;
 };
 
-const print = (consoleLog, consoleError, records) => {
-  const firstRecord = records[0];
-  if (records.length === 1 && firstRecord.isFileRead) {
-    consoleLog(firstRecord.content);
-    return;
-  }
+const noHeader = ({ content }) => content;
 
-  records.forEach(fileRecord => {
+const print = (consoleLog, consoleError, fileRecords) => {
+  const formatter = fileRecords.length === 1 ? noHeader : insertHeader;
+
+  fileRecords.forEach(fileRecord => {
     if (fileRecord.isFileRead) {
-      consoleLog(appendHeader(fileRecord));
+      consoleLog(formatter(fileRecord));
     } else {
       consoleError(`head: ${fileRecord.file}: No such file or directory`);
     }

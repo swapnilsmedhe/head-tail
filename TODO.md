@@ -10,14 +10,14 @@
   - [x] Make it work for multiple files
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
-- [ ] Extract the code of `head.js` into `main`
-- [ ] Simplify `print.js`
 - [ ] Simplify `headMain.js`
 - [ ] Move mockers to `mockers.js`
 - [ ] Rename `print`
 
 **DONE**
 
+- [x] Simplify `print.js`
+- [x] Extract the code of `head.js` into `main`
 - [x] Make head work for multiple files
 - [x] Give the output of head to `print` instead of returning it
 - [x] ~~Consider returning a richer structure from `headMain`~~ `headMain` is not returning anything
