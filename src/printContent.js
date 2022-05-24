@@ -5,7 +5,7 @@ const insertHeader = ({ content, file }) => {
 
 const noHeader = ({ content }) => content;
 
-const print = (consoleLog, consoleError, fileRecords) => {
+const printContent = (consoleLog, consoleError, fileRecords) => {
   const formatter = fileRecords.length === 1 ? noHeader : insertHeader;
 
   fileRecords.forEach(fileRecord => {
@@ -17,4 +17,4 @@ const print = (consoleLog, consoleError, fileRecords) => {
   });
 };
 
-exports.print = print;
+exports.printContent = printContent;

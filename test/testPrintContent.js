@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { print } = require('../src/print.js');
+const { printContent } = require('../src/printContent.js');
 const { mockConsole } = require('./mockers.js');
 
 describe('print', () => {
@@ -8,7 +8,7 @@ describe('print', () => {
     const mockLog = mockConsole(contents, 'hello');
     const mockError = mockConsole();
     const fileRecords = [{ file: 'a.txt', content: 'hello', isFileRead: true }];
-    print(mockLog, mockError, fileRecords);
+    printContent(mockLog, mockError, fileRecords);
     assert.deepStrictEqual(contents, ['hello']);
   });
 
@@ -18,7 +18,7 @@ describe('print', () => {
     const mockLog = mockConsole();
     const mockError = mockConsole(contents, error);
     const fileRecords = [{ file: 'a.txt', content: '', isFileRead: false }];
-    print(mockLog, mockError, fileRecords);
+    printContent(mockLog, mockError, fileRecords);
     assert.deepStrictEqual(contents, [error]);
   });
 
@@ -33,7 +33,7 @@ describe('print', () => {
       { file: 'a.txt', content: 'hello', isFileRead: true },
       { file: 'b.txt', content: 'hi', isFileRead: true }
     ];
-    print(mockLog, mockError, fileRecords);
+    printContent(mockLog, mockError, fileRecords);
     assert.deepStrictEqual(contents, [
       '==> a.txt <==\nhello',
       '==> b.txt <==\nhi'
@@ -50,7 +50,7 @@ describe('print', () => {
       { file: 'a.txt', content: 'sea', isFileRead: true },
       { file: 'b.txt', content: '', isFileRead: false }
     ];
-    print(mockLog, mockError, fileRecords);
+    printContent(mockLog, mockError, fileRecords);
     assert.deepStrictEqual(logContents, ['==> a.txt <==\nsea']);
     assert.deepStrictEqual(errorContents, [error]);
   });

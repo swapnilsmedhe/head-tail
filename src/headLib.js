@@ -1,6 +1,6 @@
 const { parseArgs } = require('./parseArgs.js');
 const { split, join } = require('./stringUtils.js');
-const { print } = require('./print.js');
+const { printContent } = require('./printContent.js');
 
 const firstNElements = (elements, count) => elements.slice(0, count);
 
@@ -23,7 +23,7 @@ const headMain = (readFile, consoleLog, consoleError, ...args) => {
     }
     return { file, content, isFileRead };
   });
-  print(consoleLog, consoleError, contents);
+  printContent(consoleLog, consoleError, contents);
 };
 
 exports.headMain = headMain;

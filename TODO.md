@@ -11,11 +11,11 @@
   - [x] Options should be parsed independent of order
   - [x] Iplement parser for non-spaced options (`-n2`)
 - [ ] Simplify `headMain.js`
-- [ ] Move mockers to `mockers.js`
-- [ ] Rename `print`
 
 **DONE**
 
+- [x] Rename `print`
+- [x] Move mockers to `mockers.js`
 - [x] Simplify `print.js`
 - [x] Extract the code of `head.js` into `main`
 - [x] Make head work for multiple files
