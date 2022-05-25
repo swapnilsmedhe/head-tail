@@ -113,6 +113,15 @@
         "no-console": "off",
         "no-magic-numbers": "off"
       }
+    },
+    {
+      "files": [
+        "tail.js"
+      ],
+      "rules": {
+        "no-console": "off",
+        "no-magic-numbers": "off"
+      }
     }
   ]
 }
