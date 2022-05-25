@@ -8,7 +8,7 @@ describe('headMain', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'hello' });
     const mockLog = mockConsole(contents, 'hello');
     const mockError = mockConsole();
-    headMain(readFileMock, mockLog, mockError, 'a.txt');
+    assert.strictEqual(headMain(readFileMock, mockLog, mockError, 'a.txt'), 0);
     assert.deepStrictEqual(contents, ['hello']);
   });
 
@@ -17,7 +17,8 @@ describe('headMain', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'a\nb\nc\nd\ne\nf' });
     const mockLog = mockConsole(contents, 'a\nb\nc\nd');
     const mockError = mockConsole();
-    headMain(readFileMock, mockLog, mockError, '-n', '4', 'a.txt');
+    assert.strictEqual(
+      headMain(readFileMock, mockLog, mockError, '-n', '4', 'a.txt'), 0);
     assert.deepStrictEqual(contents, ['a\nb\nc\nd']);
   });
 
@@ -26,7 +27,8 @@ describe('headMain', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'hello\nhi' });
     const mockLog = mockConsole(contents, 'he');
     const mockError = mockConsole();
-    headMain(readFileMock, mockLog, mockError, '-c', '2', 'a.txt');
+    assert.strictEqual(
+      headMain(readFileMock, mockLog, mockError, '-c', '2', 'a.txt'), 0);
     assert.deepStrictEqual(contents, ['he']);
   });
 
@@ -41,7 +43,8 @@ describe('headMain', () => {
       '==> b.txt <==\nsea\nlake'
     );
     const mockError = mockConsole();
-    headMain(readFileMock, mockLog, mockError, 'a.txt', 'b.txt');
+    assert.strictEqual(
+      headMain(readFileMock, mockLog, mockError, 'a.txt', 'b.txt'), 0);
     assert.deepStrictEqual(contents, [
       '==> a.txt <==\nhello\nhi',
       '==> b.txt <==\nsea\nlake'
@@ -54,7 +57,7 @@ describe('headMain', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'hello' });
     const mockLog = mockConsole();
     const mockError = mockConsole(content, error);
-    headMain(readFileMock, mockLog, mockError, 'b.txt');
+    assert.strictEqual(headMain(readFileMock, mockLog, mockError, 'b.txt'), 1);
     assert.deepStrictEqual(content, [error]);
   });
 
@@ -65,7 +68,8 @@ describe('headMain', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'sea', 'b.txt': 'lake' });
     const mockLog = mockConsole(logContent, '==> a.txt <==\nsea');
     const mockError = mockConsole(errorContent, error);
-    headMain(readFileMock, mockLog, mockError, 'a.txt', 'c.txt');
+    assert.strictEqual(
+      headMain(readFileMock, mockLog, mockError, 'a.txt', 'c.txt'), 1);
     assert.deepStrictEqual(logContent, ['==> a.txt <==\nsea']);
     assert.deepStrictEqual(errorContent, [error]);
   });

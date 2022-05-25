@@ -25,7 +25,9 @@ const headFile = (readFile, file, option) => {
 const headMain = (readFile, consoleLog, consoleError, ...args) => {
   const { files, option } = parseArgs(args);
   const headContent = files.map((file) => headFile(readFile, file, option));
+  const exitCode = headContent.some(({ isFileRead }) => !isFileRead);
   printContent(consoleLog, consoleError, headContent);
+  return +exitCode;
 };
 
 exports.headMain = headMain;

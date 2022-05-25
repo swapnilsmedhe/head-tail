@@ -48,6 +48,8 @@
 
 **DONE**
 
+- [x] Return exit code of 1 from `headMain` if file not successfully read
+- [x] Give exit code of 1 from `main` when any error occurs
 - [x] Change the error message for `can't combine line and byte counts`
 - [x] Simplify `headMain.js`
 - [x] Implement `headMain`

@@ -111,7 +111,8 @@
       ],
       "rules": {
         "no-console": "off",
-        "no-magic-numbers": "off"
+        "no-magic-numbers": "off",
+        "no-process-exit": "off"
       }
     },
     {
