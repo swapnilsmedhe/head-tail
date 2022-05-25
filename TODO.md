@@ -2,14 +2,15 @@
 
 **TODO**
 
-- [ ] Make `tail` work with file content instead of file
-- [ ] Add `tailMain`
-- [ ] Implement `tailMain` with default option of lines for a single file
-- [ ] Implement `tailMain` with custom count option
-- [ ] Implement `tailMain` with bytes option
-- [ ] Make `tailMain` work for single file 
+- [ ] Implement `tailMain` with custom count option for single file
+- [ ] Implement `tailMain` with bytes option for single file
+- [ ] Make `tailMain` work for single file with `-n` and `-c` option
+- [ ] Write parser for `tail`
 
 **DONE**
+- [x] Add `tailMain`
+- [x] Implement `tailMain` with default option of lines for a single file
+- [x] Make `tail` work with file content instead of file
 - [x] Implement `tail` with bytes option with contents of file instead of file
 - [x] Implement `tail` with lines option with contents of file instead of file
 - [x] Consider a richer structure for option as an argument to `tail`
