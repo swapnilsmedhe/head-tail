@@ -6,10 +6,12 @@
 - [ ] Implement `tailMain` with bytes option for single file
 - [ ] Make `tailMain` work for single file with `-n` and `-c` option
 - [ ] Write parser for `tail`
-- [ ] Make parser work for single `-c` option assuming option and value are space separated
 - [ ] Change directory structure from `src/head src/tail test/head test/tail` to `src` and `test`
 
 **DONE**
+- [x] Parse Multiple options
+- [x] Consider other structure to be return from `parseArgs`
+- [x] Make parser work for single `-c` option assuming option and value are space separated
 - [x] Make parser work for single `-n` option assuming option and value space are separated
 - [x] Add `tailMain`
 - [x] Implement `tailMain` with default option of lines for a single file
