@@ -6,6 +6,7 @@
 - [ ] Implement `tailMain` with bytes option for single file
 - [ ] Make `tailMain` work for single file with `-n` and `-c` option
 - [ ] Write parser for `tail`
+- [ ] Change directory structure from `src/head src/tail test/head test/tail` to `src` and `test`
 
 **DONE**
 - [x] Add `tailMain`
