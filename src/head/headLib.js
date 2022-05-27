@@ -1,6 +1,6 @@
 const { parseArgs } = require('./parseArgs.js');
 const { split, join } = require('./stringUtils.js');
-const { printContent } = require('./printContent.js');
+const { print } = require('./print.js');
 
 const firstNElements = (elements, count) => elements.slice(0, count);
 
@@ -30,7 +30,7 @@ const getExitCode = (headsOfFiles) =>
 const headMain = (args, readFile, console) => {
   const { files, option } = parseArgs(args);
   const headOfFiles = files.map((file) => headFile(readFile, file, option));
-  printContent(headOfFiles, console);
+  print(headOfFiles, console);
   return getExitCode(headOfFiles);
 };
 
