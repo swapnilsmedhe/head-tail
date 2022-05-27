@@ -7,7 +7,7 @@ const main = () => {
   try {
     process.exitCode = headMain(args, fs.readFileSync, { log, error });
   } catch (error) {
-    console.error(error.message);
+    error(error.message);
     process.exitCode = 1;
   }
 };

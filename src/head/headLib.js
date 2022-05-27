@@ -14,19 +14,18 @@ const head = (content, { name: option, value }) => {
 };
 
 const headFile = (readFile, file, option) => {
-  let content;
-  let isFileRead = true;
   try {
     const fileContent = readFile(file, 'utf8');
-    content = head(fileContent, option);
+    const content = head(fileContent, option);
+    return { file, content };
   } catch (error) {
-    isFileRead = false;
+    const errorMessage = `head: ${file}: No such file or directory`;
+    return { file, errorMessage };
   }
-  return { file, content, isFileRead };
 };
 
 const getExitCode = (headsOfFiles) =>
-  headsOfFiles.some(({ isFileRead }) => !isFileRead) ? 1 : 0;
+  headsOfFiles.some(({ errorMessage }) => errorMessage) ? 1 : 0;
 
 const headMain = (args, readFile, console) => {
   const { files, option } = parseArgs(args);

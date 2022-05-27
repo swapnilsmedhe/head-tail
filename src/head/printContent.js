@@ -9,11 +9,11 @@ const printContent = (headsOfFiles, { log, error }) => {
   const formatter = headsOfFiles.length === 1 ? noHeader : insertHeader;
 
   headsOfFiles.forEach(headOfFile => {
-    if (headOfFile.isFileRead) {
+    if (headOfFile.content) {
       log(formatter(headOfFile));
       return;
     }
-    error(`head: ${headOfFile.file}: No such file or directory`);
+    error(headOfFile.errorMessage);
   });
 };
 

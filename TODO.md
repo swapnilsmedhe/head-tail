@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Return the error of `No such file or directory` from `headFile`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
@@ -49,6 +48,7 @@
 
 - **DONE**
 
+  - [x] Return the error of `No such file or directory` from `headFile`
   - [x] Rearrage order of arguments of `headMain`
   - [x] Rearrange order of arguments of `printContent`
   - [x] Insted of sending `console.log` and `console.error` separately send them as an object

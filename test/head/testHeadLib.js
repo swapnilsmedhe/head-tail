@@ -53,17 +53,20 @@ describe('firstNElements', () => {
 });
 
 describe('headFile', () => {
-  it('should head contents of given file', () => {
+  it('should give head of contents of given file', () => {
     const readFileMock = mockReadFile({ 'a.txt': 'hello' });
     const option = { name: 'lines', value: 10 };
-    const expected = { file: 'a.txt', content: 'hello', isFileRead: true };
+    const expected = { file: 'a.txt', content: 'hello' };
     assert.deepStrictEqual(headFile(readFileMock, 'a.txt', option), expected);
   });
 
-  it('should not head contents of given file if could not read file', () => {
+  it('should not head of contents of given file if could not read file', () => {
     const readFileMock = mockReadFile({ 'b.txt': 'sea' });
     const option = { name: 'lines', value: 10 };
-    const expected = { file: 'a.txt', content: undefined, isFileRead: false };
+    const expected = {
+      file: 'a.txt', errorMessage: 'head: a.txt: No such file or directory'
+    };
+
     assert.deepStrictEqual(headFile(readFileMock, 'a.txt', option), expected);
   });
 });

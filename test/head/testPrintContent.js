@@ -9,7 +9,7 @@ describe('print', () => {
     const mockError = mockConsole();
     const console = { log: mockLog, error: mockError };
     const headsOfFiles = [
-      { file: 'a.txt', content: 'hello', isFileRead: true }
+      { file: 'a.txt', content: 'hello' }
     ];
 
     printContent(headsOfFiles, console,);
@@ -23,7 +23,7 @@ describe('print', () => {
     const mockError = mockConsole(contents, error);
     const console = { log: mockLog, error: mockError };
     const headsOfFiles = [
-      { file: 'a.txt', content: '', isFileRead: false }
+      { file: 'a.txt', errorMessage: 'head: a.txt: No such file or directory' }
     ];
 
     printContent(headsOfFiles, console);
@@ -33,21 +33,21 @@ describe('print', () => {
   it('should print output of multiple files if were read succesfully', () => {
     const contents = [];
     const mockLog = mockConsole(contents,
-      '==> a.txt <==\nhello',
-      '==> b.txt <==\nhi'
+      '==> a.txt <==\nocean',
+      '==> b.txt <==\nriver'
     );
 
     const mockError = mockConsole();
     const headsOfFiles = [
-      { file: 'a.txt', content: 'hello', isFileRead: true },
-      { file: 'b.txt', content: 'hi', isFileRead: true }
+      { file: 'a.txt', content: 'ocean' },
+      { file: 'b.txt', content: 'river' }
     ];
 
     const console = { log: mockLog, error: mockError };
     printContent(headsOfFiles, console);
     assert.deepStrictEqual(contents, [
-      '==> a.txt <==\nhello',
-      '==> b.txt <==\nhi'
+      '==> a.txt <==\nocean',
+      '==> b.txt <==\nriver'
     ]);
   });
 
@@ -59,8 +59,8 @@ describe('print', () => {
     const mockError = mockConsole(errorContents, error);
 
     const headsOfFiles = [
-      { file: 'a.txt', content: 'sea', isFileRead: true },
-      { file: 'b.txt', content: '', isFileRead: false }
+      { file: 'a.txt', content: 'sea' },
+      { file: 'b.txt', errorMessage: 'head: b.txt: No such file or directory' }
     ];
 
     const console = { log: mockLog, error: mockError };
