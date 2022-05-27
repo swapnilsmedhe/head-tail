@@ -36,6 +36,7 @@
 
 - **TODO**
 
+  - [ ] Change the order of arguments of `headFile` function
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
