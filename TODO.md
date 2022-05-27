@@ -36,6 +36,8 @@
 
 - **TODO**
 
+  - [ ] Rename `headsOfFiles` to `headOfFile`
+  - [ ] Rename `printContent` to `print`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
