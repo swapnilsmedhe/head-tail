@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Use `process.exitCode` instead of `process.exit()`
   - [ ] Insted of sending `console.log` and `console.error` separately send them as an object
   - [ ] Return the error of `No such file or directory` from `headFile`
   - [ ] Implement `parseArgs`
@@ -51,6 +50,7 @@
 
 - **DONE**
 
+  - [x] Use `process.exitCode` instead of `process.exit()`
   - [x] Rename `fileRecords` variable of `printContent` function
   - [x] Extract a function to determine exit code
   - [x] Return exit code of 1 from `headMain` if file not successfully read
