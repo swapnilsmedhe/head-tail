@@ -5,15 +5,15 @@ const insertHeader = ({ content, file }) => {
 
 const noHeader = ({ content }) => content;
 
-const printContent = (consoleLog, consoleError, headsOfFiles) => {
+const printContent = ({ log, error }, headsOfFiles) => {
   const formatter = headsOfFiles.length === 1 ? noHeader : insertHeader;
 
   headsOfFiles.forEach(headOfFile => {
     if (headOfFile.isFileRead) {
-      consoleLog(formatter(headOfFile));
+      log(formatter(headOfFile));
       return;
     }
-    consoleError(`head: ${headOfFile.file}: No such file or directory`);
+    error(`head: ${headOfFile.file}: No such file or directory`);
   });
 };
 

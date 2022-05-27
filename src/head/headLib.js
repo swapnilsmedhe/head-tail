@@ -25,10 +25,10 @@ const headFile = (readFile, file, option) => {
 const getExitCode = (headsOfFiles) =>
   headsOfFiles.some(({ isFileRead }) => !isFileRead) ? 1 : 0;
 
-const headMain = (readFile, consoleLog, consoleError, ...args) => {
+const headMain = (readFile, console, ...args) => {
   const { files, option } = parseArgs(args);
   const headsOfFiles = files.map((file) => headFile(readFile, file, option));
-  printContent(consoleLog, consoleError, headsOfFiles);
+  printContent(console, headsOfFiles);
   return getExitCode(headsOfFiles);
 };
 

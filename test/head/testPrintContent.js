@@ -7,8 +7,12 @@ describe('print', () => {
     const contents = [];
     const mockLog = mockConsole(contents, 'hello');
     const mockError = mockConsole();
-    const fileRecords = [{ file: 'a.txt', content: 'hello', isFileRead: true }];
-    printContent(mockLog, mockError, fileRecords);
+    const console = { log: mockLog, error: mockError };
+    const fileRecords = [
+      { file: 'a.txt', content: 'hello', isFileRead: true }
+    ];
+
+    printContent(console, fileRecords);
     assert.deepStrictEqual(contents, ['hello']);
   });
 
@@ -17,8 +21,12 @@ describe('print', () => {
     const error = 'head: a.txt: No such file or directory';
     const mockLog = mockConsole();
     const mockError = mockConsole(contents, error);
-    const fileRecords = [{ file: 'a.txt', content: '', isFileRead: false }];
-    printContent(mockLog, mockError, fileRecords);
+    const console = { log: mockLog, error: mockError };
+    const fileRecords = [
+      { file: 'a.txt', content: '', isFileRead: false }
+    ];
+
+    printContent(console, fileRecords);
     assert.deepStrictEqual(contents, [error]);
   });
 
@@ -28,12 +36,15 @@ describe('print', () => {
       '==> a.txt <==\nhello',
       '==> b.txt <==\nhi'
     );
+
     const mockError = mockConsole();
     const fileRecords = [
       { file: 'a.txt', content: 'hello', isFileRead: true },
       { file: 'b.txt', content: 'hi', isFileRead: true }
     ];
-    printContent(mockLog, mockError, fileRecords);
+
+    const console = { log: mockLog, error: mockError };
+    printContent(console, fileRecords);
     assert.deepStrictEqual(contents, [
       '==> a.txt <==\nhello',
       '==> b.txt <==\nhi'
@@ -46,11 +57,14 @@ describe('print', () => {
     const error = 'head: b.txt: No such file or directory';
     const mockLog = mockConsole(logContents, '==> a.txt <==\nsea');
     const mockError = mockConsole(errorContents, error);
+
     const fileRecords = [
       { file: 'a.txt', content: 'sea', isFileRead: true },
       { file: 'b.txt', content: '', isFileRead: false }
     ];
-    printContent(mockLog, mockError, fileRecords);
+
+    const console = { log: mockLog, error: mockError };
+    printContent(console, fileRecords);
     assert.deepStrictEqual(logContents, ['==> a.txt <==\nsea']);
     assert.deepStrictEqual(errorContents, [error]);
   });

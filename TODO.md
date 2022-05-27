@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Insted of sending `console.log` and `console.error` separately send them as an object
   - [ ] Return the error of `No such file or directory` from `headFile`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
@@ -50,6 +49,7 @@
 
 - **DONE**
 
+  - [x] Insted of sending `console.log` and `console.error` separately send them as an object
   - [x] Use `process.exitCode` instead of `process.exit()`
   - [x] Rename `fileRecords` variable of `printContent` function
   - [x] Extract a function to determine exit code
