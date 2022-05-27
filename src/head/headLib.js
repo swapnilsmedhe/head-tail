@@ -28,7 +28,7 @@ const getExitCode = (headsOfFiles) =>
 const headMain = (readFile, console, ...args) => {
   const { files, option } = parseArgs(args);
   const headsOfFiles = files.map((file) => headFile(readFile, file, option));
-  printContent(console, headsOfFiles);
+  printContent(headsOfFiles, console);
   return getExitCode(headsOfFiles);
 };
 

@@ -8,11 +8,11 @@ describe('print', () => {
     const mockLog = mockConsole(contents, 'hello');
     const mockError = mockConsole();
     const console = { log: mockLog, error: mockError };
-    const fileRecords = [
+    const headsOfFiles = [
       { file: 'a.txt', content: 'hello', isFileRead: true }
     ];
 
-    printContent(console, fileRecords);
+    printContent(headsOfFiles, console,);
     assert.deepStrictEqual(contents, ['hello']);
   });
 
@@ -22,11 +22,11 @@ describe('print', () => {
     const mockLog = mockConsole();
     const mockError = mockConsole(contents, error);
     const console = { log: mockLog, error: mockError };
-    const fileRecords = [
+    const headsOfFiles = [
       { file: 'a.txt', content: '', isFileRead: false }
     ];
 
-    printContent(console, fileRecords);
+    printContent(headsOfFiles, console);
     assert.deepStrictEqual(contents, [error]);
   });
 
@@ -38,13 +38,13 @@ describe('print', () => {
     );
 
     const mockError = mockConsole();
-    const fileRecords = [
+    const headsOfFiles = [
       { file: 'a.txt', content: 'hello', isFileRead: true },
       { file: 'b.txt', content: 'hi', isFileRead: true }
     ];
 
     const console = { log: mockLog, error: mockError };
-    printContent(console, fileRecords);
+    printContent(headsOfFiles, console);
     assert.deepStrictEqual(contents, [
       '==> a.txt <==\nhello',
       '==> b.txt <==\nhi'
@@ -58,13 +58,13 @@ describe('print', () => {
     const mockLog = mockConsole(logContents, '==> a.txt <==\nsea');
     const mockError = mockConsole(errorContents, error);
 
-    const fileRecords = [
+    const headsOfFiles = [
       { file: 'a.txt', content: 'sea', isFileRead: true },
       { file: 'b.txt', content: '', isFileRead: false }
     ];
 
     const console = { log: mockLog, error: mockError };
-    printContent(console, fileRecords);
+    printContent(headsOfFiles, console);
     assert.deepStrictEqual(logContents, ['==> a.txt <==\nsea']);
     assert.deepStrictEqual(errorContents, [error]);
   });

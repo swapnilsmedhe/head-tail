@@ -5,7 +5,7 @@ const insertHeader = ({ content, file }) => {
 
 const noHeader = ({ content }) => content;
 
-const printContent = ({ log, error }, headsOfFiles) => {
+const printContent = (headsOfFiles, { log, error }) => {
   const formatter = headsOfFiles.length === 1 ? noHeader : insertHeader;
 
   headsOfFiles.forEach(headOfFile => {
