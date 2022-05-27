@@ -36,6 +36,7 @@
 
 - **TODO**
 
+  - [ ] Rearrange order of arguments of `printContent`
   - [ ] Return the error of `No such file or directory` from `headFile`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
