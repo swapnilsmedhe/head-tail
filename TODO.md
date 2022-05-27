@@ -37,9 +37,8 @@
 - **TODO**
 
   - [ ] Use `process.exitCode` instead of `process.exit()`
-  - [ ] Extract a function to determine exit code
   - [ ] Insted of sending `console.log` and `console.error` separately send them as an object
-  - [ ] Rename `fileRecords` variable of `printContent` function
+  - [ ] Return the error of `No such file or directory` from `headFile`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
@@ -52,6 +51,8 @@
 
 - **DONE**
 
+  - [x] Rename `fileRecords` variable of `printContent` function
+  - [x] Extract a function to determine exit code
   - [x] Return exit code of 1 from `headMain` if file not successfully read
   - [x] Give exit code of 1 from `main` when any error occurs
   - [x] Change the error message for `can't combine line and byte counts`
