@@ -13,7 +13,7 @@ const head = (content, { name: option, value }) => {
   return join(headOfContent, delimeter);
 };
 
-const headFile = (readFile, file, option) => {
+const headFile = (file, option, readFile) => {
   try {
     const fileContent = readFile(file, 'utf8');
     const content = head(fileContent, option);
@@ -29,7 +29,7 @@ const getExitCode = (headsOfFiles) =>
 
 const headMain = (args, readFile, console) => {
   const { files, option } = parseArgs(args);
-  const headOfFiles = files.map((file) => headFile(readFile, file, option));
+  const headOfFiles = files.map((file) => headFile(file, option, readFile));
   print(headOfFiles, console);
   return getExitCode(headOfFiles);
 };
