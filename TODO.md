@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Rename `headsOfFiles` to `headOfFile`
   - [ ] Rename `printContent` to `print`
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
@@ -50,6 +49,7 @@
 
 - **DONE**
 
+  - [x] Rename `headsOfFiles` to `headOfFile`
   - [x] Return the error of `No such file or directory` from `headFile`
   - [x] Rearrage order of arguments of `headMain`
   - [x] Rearrange order of arguments of `printContent`

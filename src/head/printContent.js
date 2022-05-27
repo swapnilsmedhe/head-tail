@@ -5,10 +5,10 @@ const insertHeader = ({ content, file }) => {
 
 const noHeader = ({ content }) => content;
 
-const printContent = (headsOfFiles, { log, error }) => {
-  const formatter = headsOfFiles.length === 1 ? noHeader : insertHeader;
+const printContent = (headOfFiles, { log, error }) => {
+  const formatter = headOfFiles.length === 1 ? noHeader : insertHeader;
 
-  headsOfFiles.forEach(headOfFile => {
+  headOfFiles.forEach(headOfFile => {
     if (headOfFile.content) {
       log(formatter(headOfFile));
       return;
