@@ -4,10 +4,13 @@ const { printContent } = require('./printContent.js');
 
 const firstNElements = (elements, count) => elements.slice(0, count);
 
+const determineDelimeter = (option) => option === 'lines' ? '\n' : '';
+
 const head = (content, { name: option, value }) => {
-  const delimeter = option === 'lines' ? '\n' : '';
+  const delimeter = determineDelimeter(option);
   const splitContent = split(content, delimeter);
-  return join(firstNElements(splitContent, value), delimeter);
+  const headOfContent = firstNElements(splitContent, value);
+  return join(headOfContent, delimeter);
 };
 
 const headFile = (readFile, file, option) => {
