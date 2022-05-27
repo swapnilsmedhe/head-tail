@@ -10,7 +10,7 @@ describe('headMain', () => {
     const mockError = mockConsole();
     const console = { log: mockLog, error: mockError };
 
-    assert.strictEqual(headMain(readFileMock, console, 'a.txt'), 0);
+    assert.strictEqual(headMain(['a.txt'], readFileMock, console,), 0);
     assert.deepStrictEqual(contents, ['hello']);
   });
 
@@ -22,7 +22,7 @@ describe('headMain', () => {
     const console = { log: mockLog, error: mockError };
 
     assert.strictEqual(
-      headMain(readFileMock, console, '-n', '4', 'a.txt'), 0
+      headMain(['-n', '4', 'a.txt'], readFileMock, console), 0
     );
     assert.deepStrictEqual(contents, ['a\nb\nc\nd']);
   });
@@ -35,7 +35,7 @@ describe('headMain', () => {
     const console = { log: mockLog, error: mockError };
 
     assert.strictEqual(
-      headMain(readFileMock, console, '-c', '2', 'a.txt'), 0
+      headMain(['-c', '2', 'a.txt'], readFileMock, console), 0
     );
     assert.deepStrictEqual(contents, ['he']);
   });
@@ -56,7 +56,7 @@ describe('headMain', () => {
     const console = { log: mockLog, error: mockError };
 
     assert.strictEqual(
-      headMain(readFileMock, console, 'a.txt', 'b.txt'), 0
+      headMain(['a.txt', 'b.txt'], readFileMock, console), 0
     );
     assert.deepStrictEqual(contents, [
       '==> a.txt <==\nhello\nhi',
@@ -72,7 +72,7 @@ describe('headMain', () => {
     const mockError = mockConsole(content, error);
     const console = { log: mockLog, error: mockError };
 
-    assert.strictEqual(headMain(readFileMock, console, 'b.txt'), 1);
+    assert.strictEqual(headMain(['b.txt'], readFileMock, console), 1);
     assert.deepStrictEqual(content, [error]);
   });
 
@@ -86,7 +86,7 @@ describe('headMain', () => {
     const console = { log: mockLog, error: mockError };
 
     assert.strictEqual(
-      headMain(readFileMock, console, 'a.txt', 'c.txt'), 1
+      headMain(['a.txt', 'c.txt'], readFileMock, console), 1
     );
     assert.deepStrictEqual(logContent, ['==> a.txt <==\nsea']);
     assert.deepStrictEqual(errorContent, [error]);

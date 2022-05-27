@@ -5,7 +5,7 @@ const main = () => {
   const args = process.argv.slice(2);
   const { log, error } = console;
   try {
-    process.exitCode = headMain(fs.readFileSync, { log, error }, ...args);
+    process.exitCode = headMain(args, fs.readFileSync, { log, error });
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

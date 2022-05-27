@@ -49,6 +49,7 @@
 
 - **DONE**
 
+  - [x] Rearrage order of arguments of `headMain`
   - [x] Rearrange order of arguments of `printContent`
   - [x] Insted of sending `console.log` and `console.error` separately send them as an object
   - [x] Use `process.exitCode` instead of `process.exit()`
