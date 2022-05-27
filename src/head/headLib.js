@@ -22,12 +22,14 @@ const headFile = (readFile, file, option) => {
   return { file, content, isFileRead };
 };
 
+const getExitCode = (headsOfFiles) =>
+  headsOfFiles.some(({ isFileRead }) => !isFileRead) ? 1 : 0;
+
 const headMain = (readFile, consoleLog, consoleError, ...args) => {
   const { files, option } = parseArgs(args);
-  const headContent = files.map((file) => headFile(readFile, file, option));
-  const exitCode = headContent.some(({ isFileRead }) => !isFileRead);
-  printContent(consoleLog, consoleError, headContent);
-  return +exitCode;
+  const headsOfFiles = files.map((file) => headFile(readFile, file, option));
+  printContent(consoleLog, consoleError, headsOfFiles);
+  return getExitCode(headsOfFiles);
 };
 
 exports.headMain = headMain;

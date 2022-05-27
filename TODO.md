@@ -36,6 +36,10 @@
 
 - **TODO**
 
+  - [ ] Use `process.exitCode` instead of `process.exit()`
+  - [ ] Extract a function to determine exit code
+  - [ ] Insted of sending `console.log` and `console.error` separately send them as an object
+  - [ ] Rename `fileRecords` variable of `printContent` function
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
