@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Extract a function to read file
   - [ ] Implement `parseArgs`
     - [x] Make it work for single file
     - [ ] Report errors if provided options are invalid
@@ -49,6 +48,7 @@
 
 - **DONE**
 
+  - [x] Extract a function to read file
   - [x] Change the order of arguments of `headFile` function
   - [x] Rename `printContent` to `print`
   - [x] Rename `headsOfFiles` to `headOfFile`

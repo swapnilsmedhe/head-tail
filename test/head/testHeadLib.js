@@ -1,5 +1,6 @@
 const assert = require('assert');
-const { head, firstNElements, headFile } = require('../../src/head/headLib.js');
+const lib = require('../../src/head/headLib.js');
+const { head, firstNElements, headFile, readFileContent } = lib;
 const { mockReadFile } = require('./mockers.js');
 
 describe('head', () => {
@@ -60,13 +61,30 @@ describe('headFile', () => {
     assert.deepStrictEqual(headFile('a.txt', option, readFileMock), expected);
   });
 
-  it('should not head of contents of given file if could not read file', () => {
-    const readFileMock = mockReadFile({ 'b.txt': 'sea' });
+  it('should not give head of contents of given file if could not read file', () => {
+    const error = { errno: 1 };
+    const readFileMock = mockReadFile({ 'b.txt': 'sea' }, error);
     const option = { name: 'lines', value: 10 };
     const expected = {
       file: 'a.txt', errorMessage: 'head: a.txt: No such file or directory'
     };
 
     assert.deepStrictEqual(headFile('a.txt', option, readFileMock), expected);
+  });
+});
+
+describe('readFileContent', () => {
+  it('should give content of file if file read successfully', () => {
+    const readFileMock = mockReadFile({ 'a.txt': 'ocean' });
+    assert.deepStrictEqual(readFileContent('a.txt', readFileMock), {
+      file: 'a.txt', fileContent: 'ocean'
+    });
+  });
+
+  it('shoud give error if could not read file', () => {
+    const readFileMock = mockReadFile({ 'c.txt': 'river' }, { errno: 1 });
+    assert.deepStrictEqual(readFileContent('b.txt', readFileMock), {
+      file: 'b.txt', errorNo: 1
+    });
   });
 });

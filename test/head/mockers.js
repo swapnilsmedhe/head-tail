@@ -1,9 +1,11 @@
 const assert = require('assert');
 
-const mockReadFile = (mockFiles) => {
+const mockReadFile = (mockFiles, error) => {
   return (fileName, encoding) => {
     assert.strictEqual(encoding, 'utf8');
-    assert.ok(Object.keys(mockFiles).includes(fileName));
+    if (!mockFiles[fileName]) {
+      throw error;
+    }
     return mockFiles[fileName];
   };
 };

@@ -67,7 +67,7 @@ describe('headMain', () => {
   it('should print error if could not read a file', () => {
     const content = [];
     const error = 'head: b.txt: No such file or directory';
-    const readFileMock = mockReadFile({ 'a.txt': 'hello' });
+    const readFileMock = mockReadFile({ 'a.txt': 'hello' }, { errno: 1 });
     const mockLog = mockConsole();
     const mockError = mockConsole(content, error);
     const console = { log: mockLog, error: mockError };
@@ -80,7 +80,10 @@ describe('headMain', () => {
     const logContent = [];
     const errorContent = [];
     const error = 'head: c.txt: No such file or directory';
-    const readFileMock = mockReadFile({ 'a.txt': 'sea', 'b.txt': 'lake' });
+    const readFileMock = mockReadFile({ 'a.txt': 'sea', 'b.txt': 'lake' }, {
+      errno: 1
+    });
+
     const mockLog = mockConsole(logContent, '==> a.txt <==\nsea');
     const mockError = mockConsole(errorContent, error);
     const console = { log: mockLog, error: mockError };

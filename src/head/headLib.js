@@ -13,15 +13,26 @@ const head = (content, { name: option, value }) => {
   return join(headOfContent, delimeter);
 };
 
-const headFile = (file, option, readFile) => {
+const readFileContent = (file, readFile) => {
   try {
     const fileContent = readFile(file, 'utf8');
-    const content = head(fileContent, option);
-    return { file, content };
+    return { file, fileContent };
   } catch (error) {
-    const errorMessage = `head: ${file}: No such file or directory`;
-    return { file, errorMessage };
+    return { file, errorNo: error.errno };
   }
+};
+
+const generateErrorMessage = (file) =>
+  `head: ${file}: No such file or directory`;
+
+const headFile = (file, option, readFile) => {
+  const { fileContent, errorNo } = readFileContent(file, readFile);
+
+  if (errorNo) {
+    return { file, errorMessage: generateErrorMessage(file) };
+  }
+  const content = head(fileContent, option);
+  return { file, content };
 };
 
 const getExitCode = (headsOfFiles) =>
@@ -38,3 +49,4 @@ exports.headMain = headMain;
 exports.head = head;
 exports.firstNElements = firstNElements;
 exports.headFile = headFile;
+exports.readFileContent = readFileContent;
