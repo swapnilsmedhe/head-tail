@@ -1,2 +1,4 @@
-exports.split = (content, delimeter) => content.split(delimeter);
-exports.join = (elements, delimeter) => elements.join(delimeter);
+const NEWLINE = '\n';
+
+exports.splitLines = (content) => content.split(NEWLINE);
+exports.joinLines = (lines) => lines.join(NEWLINE);

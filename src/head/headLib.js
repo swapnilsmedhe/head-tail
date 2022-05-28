@@ -1,10 +1,10 @@
 const { parseArgs } = require('./parseArgs.js');
-const { split, join } = require('./stringUtils.js');
+const { splitLines, joinLines } = require('./stringUtils.js');
 const { print } = require('./print.js');
 
 const firstNLines = (content, count) => {
-  const lines = content.split('\n');
-  return lines.slice(0, count).join('\n');
+  const lines = splitLines(content);
+  return joinLines(lines.slice(0, count));
 };
 
 const firstNCharacters = (content, count) => content.substring(0, count);

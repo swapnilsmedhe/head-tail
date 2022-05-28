@@ -36,7 +36,6 @@
 
 - **TODO**
 
-  - [ ] Extract `splitLines` and `joinLines` from `firstNLines`
   - [ ] Extract a function to determine which function to call out of `firstNlines` or `firstNCharacter`, from `headMain`
   - [ ] Implement `parseArgs`
   - [x] Make it work for single file
@@ -50,6 +49,7 @@
 
 - **DONE**
 
+  - [x] Extract `splitLines` and `joinLines` from `firstNLines`
   - [x] Insted of taking the desicion of delimeter multiple times in `head` take it once in `headMain`
   - [x] Extract a function to read file
   - [x] Change the order of arguments of `headFile` function
