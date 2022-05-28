@@ -31,14 +31,17 @@ const headFile = (file, head, { value }, readFile) => {
   return { file, content };
 };
 
+const mapHead = (option) =>
+  option.name === 'lines' ? firstNLines : firstNCharacters;
+
 const getExitCode = (headsOfFiles) =>
   headsOfFiles.some(({ errorMessage }) => errorMessage) ? 1 : 0;
 
 const headMain = (args, readFile, console) => {
   const { files, option } = parseArgs(args);
-  const headMap = option.name === 'lines' ? firstNLines : firstNCharacters;
+  const head = mapHead(option);
   const headOfFiles = files.map((file) =>
-    headFile(file, headMap, option, readFile));
+    headFile(file, head, option, readFile));
 
   print(headOfFiles, console);
   return getExitCode(headOfFiles);
