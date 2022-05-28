@@ -36,18 +36,21 @@
 
 - **TODO**
 
+  - [ ] Extract `splitLines` and `joinLines` from `firstNLines`
+  - [ ] Extract a function to determine which function to call out of `firstNlines` or `firstNCharacter`, from `headMain`
   - [ ] Implement `parseArgs`
-    - [x] Make it work for single file
-    - [ ] Report errors if provided options are invalid
-        [x] If both `-n` and `-c` options are provided
-        [ ] No value provided with option
-    - [x] If no options are given provide default option of count lines with defualt of 10
-    - [x] Make it work for multiple files
-    - [x] Options should be parsed independent of order
-    - [x] Iplement parser for non-spaced options (`-n2`)
+  - [x] Make it work for single file
+  - [ ] Report errors if provided options are invalid
+      [x] If both `-n` and `-c` options are provided
+      [ ] No value provided with option
+  - [x] If no options are given provide default option of count lines with defualt of 10
+  - [x] Make it work for multiple files
+  - [x] Options should be parsed independent of order
+  - [x] Iplement parser for non-spaced options (`-n2`)
 
 - **DONE**
 
+  - [x] Insted of taking the desicion of delimeter multiple times in `head` take it once in `headMain`
   - [x] Extract a function to read file
   - [x] Change the order of arguments of `headFile` function
   - [x] Rename `printContent` to `print`

@@ -2,16 +2,12 @@ const { parseArgs } = require('./parseArgs.js');
 const { split, join } = require('./stringUtils.js');
 const { print } = require('./print.js');
 
-const firstNElements = (elements, count) => elements.slice(0, count);
-
-const determineDelimeter = (option) => option === 'lines' ? '\n' : '';
-
-const head = (content, { name: option, value }) => {
-  const delimeter = determineDelimeter(option);
-  const splitContent = split(content, delimeter);
-  const headOfContent = firstNElements(splitContent, value);
-  return join(headOfContent, delimeter);
+const firstNLines = (content, count) => {
+  const lines = content.split('\n');
+  return lines.slice(0, count).join('\n');
 };
+
+const firstNCharacters = (content, count) => content.substring(0, count);
 
 const readFileContent = (file, readFile) => {
   try {
@@ -25,13 +21,13 @@ const readFileContent = (file, readFile) => {
 const generateErrorMessage = (file) =>
   `head: ${file}: No such file or directory`;
 
-const headFile = (file, option, readFile) => {
+const headFile = (file, head, { value }, readFile) => {
   const { fileContent, errorNo } = readFileContent(file, readFile);
 
   if (errorNo) {
     return { file, errorMessage: generateErrorMessage(file) };
   }
-  const content = head(fileContent, option);
+  const content = head(fileContent, value);
   return { file, content };
 };
 
@@ -40,13 +36,16 @@ const getExitCode = (headsOfFiles) =>
 
 const headMain = (args, readFile, console) => {
   const { files, option } = parseArgs(args);
-  const headOfFiles = files.map((file) => headFile(file, option, readFile));
+  const headMap = option.name === 'lines' ? firstNLines : firstNCharacters;
+  const headOfFiles = files.map((file) =>
+    headFile(file, headMap, option, readFile));
+
   print(headOfFiles, console);
   return getExitCode(headOfFiles);
 };
 
 exports.headMain = headMain;
-exports.head = head;
-exports.firstNElements = firstNElements;
+exports.firstNLines = firstNLines;
+exports.firstNCharacters = firstNCharacters;
 exports.headFile = headFile;
 exports.readFileContent = readFileContent;
